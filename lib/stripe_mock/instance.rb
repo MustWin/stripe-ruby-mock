@@ -36,7 +36,6 @@ module StripeMock
 
     attr_reader :accounts, :bank_tokens, :charges, :coupons, :customers, :events,
                 :invoices, :invoice_items, :plans, :recipients, :transfers, :subscriptions
-
     attr_accessor :error_queue, :debug
 
     def initialize
@@ -44,6 +43,7 @@ module StripeMock
       @bank_tokens = {}
       @card_tokens = {}
       @customers = {}
+      @recipients = {}
       @charges = {}
       @coupons = {}
       @events = {}

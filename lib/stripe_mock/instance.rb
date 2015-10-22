@@ -50,6 +50,7 @@ module StripeMock
       @invoices = {}
       @invoice_items = {}
       @plans = {}
+      @recipient_tokens = {}
       @recipients = {}
       @transfers = {}
       @subscriptions = {}
@@ -98,6 +99,13 @@ module StripeMock
     def generate_webhook_event(event_data)
       event_data[:id] ||= new_id 'evt'
       @events[ event_data[:id] ] = symbolize_names(event_data)
+    end
+
+    def generate_recipient_token(recipient_params)
+      token = new_id 'tok'
+      recipient_params[:id] = new_id 'rec'
+      @recipient_tokens[token] = Data.mock_card(recipient_params)
+      token
     end
 
     private

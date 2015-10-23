@@ -19,7 +19,7 @@ module StripeMock
 
         if params[:source]
           new_card = get_card_by_token(params.delete(:source))
-          add_card_to_object(:customer, new_card, customer)
+          add_source_to_object(:customer, new_card, customer)
           customer[:default_source] = new_card[:id]
         end
 
@@ -71,7 +71,7 @@ module StripeMock
 
         if params[:source]
           new_card = get_card_by_token(params.delete(:source))
-          add_card_to_object(:customer, new_card, customer)
+          add_source_to_object(:customer, new_card, customer)
           customer[:default_source] = new_card[:id]
         end
 

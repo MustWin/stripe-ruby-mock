@@ -73,7 +73,7 @@ module StripeMock
             end
             new_card = card_from_params(params.delete(:source))
           end
-          add_card_to_object(:customer, new_card, cus, true)
+          add_source_to_object(:customer, new_card, cus, true)
           cus[:default_source] = new_card[:id]
         end
 

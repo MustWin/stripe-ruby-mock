@@ -34,12 +34,15 @@ require 'stripe_mock/api/live'
 require 'stripe_mock/api/test_helpers'
 require 'stripe_mock/api/webhooks'
 
-require 'stripe_mock/request_handlers/helpers/card_helpers.rb'
+require 'stripe_mock/request_handlers/helpers/source_helpers.rb'
+require 'stripe_mock/request_handlers/helpers/bank_account_helper.rb'
+require 'stripe_mock/request_handlers/helpers/card_helper.rb'
+
 require 'stripe_mock/request_handlers/helpers/charge_helpers.rb'
 require 'stripe_mock/request_handlers/helpers/coupon_helpers.rb'
+
 require 'stripe_mock/request_handlers/helpers/subscription_helpers.rb'
 require 'stripe_mock/request_handlers/helpers/token_helpers.rb'
-
 require 'stripe_mock/request_handlers/validators/param_validators.rb'
 
 require 'stripe_mock/request_handlers/accounts.rb'

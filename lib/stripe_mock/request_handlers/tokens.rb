@@ -18,7 +18,7 @@ module StripeMock
           customer = assert_existence :customer, cus_id, customers[cus_id]
 
           # params[:card] is an id; grab it from the db
-          customer_card = get_card(customer, params[:source])
+          customer_card = get_source(customer, params[:source])
           assert_existence :card, params[:source], customer_card
         elsif params[:card]
           # params[:card] is a hash of cc info; "Sanitize" the card number
@@ -27,7 +27,7 @@ module StripeMock
           customer_card = params[:card]
         else
           customer = assert_existence :customer, cus_id, customers[cus_id]
-          customer_card = get_card(customer, customer[:default_source])
+          customer_card = get_source(customer, customer[:default_source])
         end
 
         token_id = generate_card_token(customer_card)

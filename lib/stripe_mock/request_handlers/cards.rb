@@ -23,12 +23,12 @@ module StripeMock
         route =~ method_url
         recipient = assert_existence :recipient, $1, recipients[$1]
 
-        assert_existence :card, $2, get_card(recipient, $2, "Recipient")
+        assert_existence :card, $2, get_source(recipient, $2, 'Recipient')
       end
 
       def delete_recipient_card(route, method_url, params, headers)
         route =~ method_url
-        delete_card_from(:recipient, $1, $2, recipients)
+        delete_source_from(:recipient, $1, $2, recipients)
       end
     end
   end

@@ -3,13 +3,13 @@ module StripeMock
     module Helpers
 
       def generate_bank_token(bank_params)
-        token = new_id 'btok'
+        token = new_id BankAccountHelper.token_prefix
         @bank_tokens[token] = Data.mock_bank_account bank_params
         token
       end
 
       def generate_card_token(card_params)
-        token = new_id 'tok'
+        token = new_id CardHelper.token_prefix
         card_params[:id] = new_id 'cc'
         @card_tokens[token] = Data.mock_card symbolize_names(card_params)
         token
@@ -27,7 +27,7 @@ module StripeMock
         if token.nil? || @card_tokens[token].nil?
           # TODO: Make this strict
           msg = "Invalid token id: #{token}"
-          raise Stripe::InvalidRequestError.new(msg, 'tok', 404)
+          raise Stripe::InvalidRequestError.new(msg, CardHelper.token_prefix, 404)
         else
           @card_tokens.delete(token)
         end

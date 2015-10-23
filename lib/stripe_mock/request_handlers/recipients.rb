@@ -32,7 +32,7 @@ module StripeMock
 
         if params[:card]
           new_card = get_card_by_token(params.delete(:card))
-          add_card_to_object(:recipient, new_card, recipient, true)
+          add_source_to_object(:recipient, new_card, recipient, true)
           recipient[:default_card] = new_card[:id]
         end
 

@@ -82,7 +82,7 @@ module StripeMock
       def add_source_to(type, type_id, params, objects)
         if params[BankAccountHelper.key] || (!params[:source].nil? &&
               params[:source].include?(BankAccountHelper.token_prefix))
-          add_bank_account_to(type, type_id, params, objects)
+          return add_bank_account_to(type, type_id, params, objects)
         end
 
         add_card_to(type, type_id, params, objects)
@@ -119,7 +119,7 @@ module StripeMock
           attrs_or_token = generate_bank_token(attrs_or_token)
         end
         
-        get_bank_account_by_token(attrs_or_token) 
+        get_bank_by_token(attrs_or_token) 
       end
 
       def validate_card(card)
